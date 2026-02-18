@@ -72,6 +72,6 @@ services:
     networks:
       - moodle-net
 
-  networks:
+networks:
   moodle-net:
     driver: bridge
