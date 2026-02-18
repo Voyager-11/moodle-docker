@@ -41,7 +41,7 @@ services:
       - MOODLE_DB_USER=moodle
       - MOODLE_DB_PASSWORD=password
       - MOODLE_DB_PREFIX=
-      - MOODLE_URL=http://localhost:8080
+      - MOODLE_URL=https://app.medbac.com.br
       #- MOODLE_SITE_FULLNAME=
       #- MOODLE_SITE_SHORTNAME=
       #- MOODLE_SITE_LANG=
