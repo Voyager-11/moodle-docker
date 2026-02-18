@@ -11,11 +11,14 @@ services:
       - ./.data/db:/var/lib/mysql
     ports:
       - 3306:3306
+    networks:
+      - moodle-net
+
   web:
     image: lthub/moodle
     build: .
-    ports:
-      - 8080:80
+    #ports:
+      #- 8080:80 # Dokploy deploy
     # use the links section if you want to use a container for a database.
     # if not, and you want to use an external database server, configure
     # if with the environment variables in the 'environment' section.
@@ -28,6 +31,8 @@ services:
       # do not uncomment this when starting a new instance from scratch as
       # init script won't be able to move this file
       #- ./LocalSettings.php:/var/www/html/LocalSettings.php
+    networks:
+      - moodle-net
     environment:
       - MOODLE_DB_TYPE=mariadb
       - MOODLE_DB_HOST=db
@@ -64,3 +69,9 @@ services:
       - ./.data/redis:/data
     ports:
       - 6379:6379
+    networks:
+      - moodle-net
+
+  networks:
+  moodle-net:
+    driver: bridge
